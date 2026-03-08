@@ -65,9 +65,9 @@ async function processAccount(
   try {
   await storage.setItem('kv:test', 'test')
   const val = await storage.getItem('kv:test')
-  console.log('Storage test:', val)
+  messageCollector.info('Storage test:', val)
 } catch (e) {
-  console.error('Storage error:', e)
+  messageCollector.error('Storage error:', e)
 }
 
   if (hasAttended) {
