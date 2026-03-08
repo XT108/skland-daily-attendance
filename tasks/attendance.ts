@@ -61,6 +61,15 @@ async function processAccount(
   const attendanceKey = await generateAttendanceKey(token)
   const hasAttended = await storage.getItem(attendanceKey)
 
+  //自试
+  try {
+  await storage.setItem('kv:test', 'test')
+  const val = await storage.getItem('kv:test')
+  console.log('Storage test:', val)
+} catch (e) {
+  console.error('Storage error:', e)
+}
+
   if (hasAttended) {
     messageCollector.notify(`\n--- 账号 ${accountNumber}/${totalAccounts} ---`)
     messageCollector.info(`今天已经签到过，跳过`)
